@@ -1,4 +1,4 @@
-FILES = main.o adc.o eeprom.o gpio.o i2c.o spi.o uart.o 
+FILES = main.o adc.o eeprom.o gpio.o i2c.o spi.o uart.o timer.o
 INCLUDE = include/
 MCU = atmega32
 
@@ -37,7 +37,10 @@ spi.o: src/spi.c
 
 uart.o: src/uart.c
 	avr-gcc -c $^ -o $@ -mmcu=$(MCU) -O0 -I $(INCLUDE) 
-## TODO : Timer Module
+
+timer.o: src/timer.c
+	avr-gcc -c $^ -o $@ -mmcu=$(MCU) -O0 -I $(INCLUDE) 
+
 
 .Phony: clean
 
